@@ -89,11 +89,12 @@ class ConveyorBelt():
 			'/gazebo_sim/conveyor/control', ConveyorBeltControl)
 		service_request = ConveyorBeltControlRequest(set_power)
 		service_response = gazebo_conveyor_belt_service_proxy(service_request)
-
-		self.apply_force("belt_box::link", 0, 0, 0.001)
-		self.apply_force("belt_box_clone::link", 0, 0, 0.000000001)
-		self.apply_force("package_mumbai::link", 0, 0, 0.000000001)
+		
 		self.apply_force("conveyor_belt::conveyor_belt_moving::belt", 0, 0, 9.8)
+
+		self.apply_force("packagen1::link", 0, 0, 0.000000001)
+		self.apply_force("packagen2::link", 0, 0, 0.000000001)
+		self.apply_force("packagen3::link", 0, 0, 0.000000001)
 		
 
 		return conveyorBeltPowerMsgResponse(service_response.success)
@@ -111,7 +112,7 @@ def main():
 
 	rospy.wait_for_service('/gazebo_sim/conveyor/control')
 
-	s = rospy.Service('/eyrc/vb_sim/conveyor/set_power', conveyorBeltPowerMsg,
+	s = rospy.Service('/eyrc/vb/conveyor/set_power', conveyorBeltPowerMsg,
 					  warehouse_conveyor.callback_service_on_request)
 
 	rospy.loginfo(

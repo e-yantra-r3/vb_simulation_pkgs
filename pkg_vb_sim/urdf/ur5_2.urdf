@@ -5,12 +5,12 @@
 <!-- =================================================================================== -->
 <robot name="ur5">
   <!-- world -->
-  <link name="world"/>
+  <link name="ur5_origin"/>
   
   <joint name="ur5_pedestal_joint" type="fixed">
     <!-- <origin rpy="0 0 0" xyz="0.5 1.8 0.0"/> -->
     <origin rpy="0 0 0" xyz="0.0 0.0 0.0"/>
-    <parent link="world"/>
+    <parent link="ur5_origin"/>
     <child link="ur5_pedestal_link"/>
   </joint>
   
