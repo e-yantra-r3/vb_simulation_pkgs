@@ -5,12 +5,12 @@
 <!-- =================================================================================== -->
 <robot name="ur5">
   <!-- world -->
-  <link name="ur5_origin"/>
+  <link name="world"/>
   
   <joint name="ur5_pedestal_joint" type="fixed">
     <!-- <origin rpy="0 0 0" xyz="0.5 1.8 0.0"/> -->
     <origin rpy="0 0 0" xyz="0.0 0.0 0.0"/>
-    <parent link="ur5_origin"/>
+    <parent link="world"/>
     <child link="ur5_pedestal_link"/>
   </joint>
   
@@ -37,7 +37,7 @@
     </inertial>
   </link>
   <gazebo reference="ur5_pedestal_link">
-    <material>Gazebo/Blue</material>
+    <material>Gazebo/DarkGray</material>
   </gazebo>
 
 
@@ -329,12 +329,12 @@
 
   <joint name="gripper_base_to_gripper" type="revolute">
       <parent link="Gripper_Base" />
-      <child link="vacuum_gripper" />
+      <child link="vacuum_gripper_link" />
       <origin rpy="0 0 0" xyz="0 0 0.0221" />
       <limit effort="30" velocity="1.0" lower="0" upper="0" />
     </joint>
 
-  <link name="vacuum_gripper">
+  <link name="vacuum_gripper_link">
     
     <visual>
       <!-- <origin xyz="0 0 0" rpy="0 -1.57070 0"/> -->
@@ -366,9 +366,13 @@
       </plugin>
     </gazebo>
 
-    <gazebo reference="vacuum_gripper">
+    <gazebo reference="vacuum_gripper_link">
+      <material>Gazebo/DarkGray</material>
+    </gazebo>
 
-      <sensor name="vacuum_gripper_logical_camera" type="logical_camera">
+    <gazebo reference="vacuum_gripper_link">
+
+      <sensor name="vacuum_gripper_link_logical_camera" type="logical_camera">
 
         <!-- <pose frame=''>0 0 -0.07 0 -1.57070 0</pose> -->
         <!-- <origin xyz="0 0 0" rpy="0 -1.57070 0"/> -->
@@ -383,10 +387,10 @@
         </logical_camera>
 
         <!-- <visualize>true</visualize> -->
-        <visualize>false</visualize>
+        <visualize>true</visualize>
         <always_on>true</always_on>
         <update_rate>10</update_rate>
-        <topic>logical_camera</topic>
+        <topic>logical_camera_ur5_2</topic>
       </sensor>
 
     </gazebo>

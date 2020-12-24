@@ -1,0 +1,36 @@
+<launch>
+  <param name="/use_sim_time" value="true" />
+  <arg name="robot_name"/>
+  <arg name="init_pose"/>
+  <!-- <arg name= "limited" default= "false"/> -->
+  <arg name="paused" default="false" doc="Starts gazebo in paused mode" />
+  <!-- <arg name="transmission_hw_interface" default="hardware_interface/PositionJointInterface" /> -->
+  <arg name="gui" default="true" doc="Starts gazebo gui" />
+  
+  <include file="$(find gazebo_ros)/launch/empty_world.launch">
+    <arg name="world_name" default="worlds/empty.world"/>
+    <arg name="paused" value="$(arg paused)"/>
+    <arg name="gui" value="$(arg gui)"/>
+  </include>
+
+  <group ns="ur5_1">
+    <param name="tf_prefix" value="ur5_1_tf" />
+      <include file="$(find pkg_vb_sim)/launch/gazebo_single_ur5.launch">
+        <arg name="init_pose" value="-x 0 -y 0 -z 0.0"/>
+        <arg name="robot_name" value="ur5_1"/>
+      </include>
+    </group>
+
+  <group ns="ur5_2">
+    <param name="tf_prefix" value="ur5_2_tf" />
+      <include file="$(find pkg_vb_sim)/launch/gazebo_single_ur5.launch">
+        <arg name="init_pose" value="-x 0 -y 7 -z 0.0"/>
+        <arg name="robot_name" value="ur5_2"/>
+      </include>
+    </group>
+
+
+<include file="$(find pkg_moveit_ur5)/launch/two_ur5_move_group.launch" />    
+
+
+</launch>

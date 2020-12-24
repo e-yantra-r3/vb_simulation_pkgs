@@ -1,0 +1,31 @@
+<launch>
+  
+  <arg name="robot_name"/>
+  <arg name="init_pose"/>
+
+  <!-- Load Robot Description in Parameter Server -->
+  <param name="robot_description" textfile="$(find pkg_vb_sim)/urdf/ur5_2.urdf"/>
+  
+  <!-- Load Gazebo with Empty World --> 
+  <!-- <include file="$(find gazebo_ros)/launch/empty_world.launch" /> -->
+
+  <!-- Spawn URDF in Gazebo -->
+  <node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model" args="$(arg init_pose) -urdf -param robot_description -model $(arg robot_name)" respawn="false" output="screen" />
+
+  <!-- Launch the Controller for the Robot in Gazebo -->
+  <rosparam file ="$(find pkg_vb_sim)/config/ur5/gazebo_controllers_single_ur5.yaml"/>
+    
+  <node name= "controller_spawner" pkg= "controller_manager" type="spawner" args="ur5_controller"/>
+
+  <!-- Robot State Publisher for TF of each joint: publishes all the current states of the joint, then RViz can visualize -->
+  <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher"/>
+  
+  <!-- <rosparam file ="$(find pkg_vb_sim)/config/config_vacuum_gripper.yaml"/>
+  <node name= "node_service_server_vacuum_gripper" pkg= "pkg_vb_sim" type="node_service_server_vacuum_gripper.py" output="screen"/> -->
+
+
+
+  <!-- load other controllers -->
+  <!-- <node name="ros_control_controller_manager" pkg="controller_manager" type="controller_manager" respawn="false" output="screen" args="load joint_group_position_controller" /> -->
+
+</launch>

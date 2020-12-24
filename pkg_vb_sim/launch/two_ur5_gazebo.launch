@@ -1,0 +1,38 @@
+<launch>
+  <param name="/use_sim_time" value="true" />
+  <arg name="robot_name"/>
+  <arg name="init_pose"/>
+  <!-- <arg name= "limited" default= "false"/> -->
+  <arg name="paused" default="false" doc="Starts gazebo in paused mode" />
+  <!-- <arg name="transmission_hw_interface" default="hardware_interface/PositionJointInterface" /> -->
+  <arg name="gui" default="true" doc="Starts gazebo gui" />
+  
+  <group ns="ur5_1">
+    <param name="tf_prefix" value="ur5_1_tf" />
+      <include file="$(find pkg_vb_sim)/launch/gazebo_single_ur5_1.launch">
+        <arg name="init_pose" value="-x 0 -y 7 -z 0.0"/>
+        <arg name="robot_name" value="ur5_1"/>
+      </include>
+    </group>
+
+  <group ns="ur5_2">
+    <param name="tf_prefix" value="ur5_2_tf" />
+      <include file="$(find pkg_vb_sim)/launch/gazebo_single_ur5_2.launch">
+        <arg name="init_pose" value="-x 0 -y 0 -z 0.0"/>
+        <arg name="robot_name" value="ur5_2"/>
+      </include>
+    </group>
+
+
+
+<!-- TF Broadcaster to merge TFs of ur5_1 and ur5_2 with world frame -->
+<node name= "node_merge_tf_tress" pkg= "pkg_vb_sim" type="node_merge_tf_tress.py"/>
+
+
+<!-- Start Vacuum Gripper Service for the two UR5s -->
+<rosparam file ="$(find pkg_vb_sim)/config/config_vacuum_gripper.yaml"/>
+<node name= "node_service_server_vacuum_gripper_ur5_1" pkg= "pkg_vb_sim" type="node_service_server_vacuum_gripper_ur5_1.py" output="screen"/>
+<node name= "node_service_server_vacuum_gripper_ur5_2" pkg= "pkg_vb_sim" type="node_service_server_vacuum_gripper_ur5_2.py" output="screen"/>
+
+
+</launch>

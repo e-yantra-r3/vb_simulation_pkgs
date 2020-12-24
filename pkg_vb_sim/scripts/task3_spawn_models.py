@@ -181,20 +181,11 @@ sdf_cube_blue = """<?xml version="1.0" ?>
           </contact>
         </surface>
       </collision>
-      <visual name="stairs_visual0">
-        <pose>0 0 0 0 0 0</pose>
-        <geometry>
-          <box>
-            <size>SIZEXYZ</size>
-          </box>
-        </geometry>
-        <material>
-          <script>
-            <uri>file://media/materials/scripts/gazebo.material</uri>
-            <name>Gazebo/Blue</name>
-          </script>
-        </material>
-      </visual>
+		<visual name="stairs_visual0">
+		  <mesh>
+		    <uri>file://box_qr.obj</uri>
+		  </mesh>
+		</visual>
       <velocity_decay>
         <linear>0.000000</linear>
         <angular>0.000000</angular>

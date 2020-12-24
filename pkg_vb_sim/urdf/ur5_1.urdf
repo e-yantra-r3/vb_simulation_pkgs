@@ -37,7 +37,7 @@
     </inertial>
   </link>
   <gazebo reference="ur5_pedestal_link">
-    <material>Gazebo/Red</material>
+    <material>Gazebo/DarkGray</material>
   </gazebo>
 
 
@@ -367,7 +367,7 @@
     </gazebo>
 
     <gazebo reference="vacuum_gripper_link">
-      <material>Gazebo/Black</material>
+      <material>Gazebo/DarkGray</material>
     </gazebo>
 
     <gazebo reference="vacuum_gripper_link">
@@ -390,7 +390,7 @@
         <visualize>true</visualize>
         <always_on>true</always_on>
         <update_rate>10</update_rate>
-        <topic>logical_camera</topic>
+        <topic>logical_camera_ur5_1</topic>
       </sensor>
 
     </gazebo>

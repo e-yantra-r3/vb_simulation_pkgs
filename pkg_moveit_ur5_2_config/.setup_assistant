@@ -1,0 +1,11 @@
+moveit_setup_assistant_config:
+  URDF:
+    package: pkg_vb_sim
+    relative_path: urdf/ur5_2.urdf
+    xacro_args: ""
+  SRDF:
+    relative_path: config/ur5.srdf
+  CONFIG:
+    author_name: eyantra
+    author_email: eyantra@eyantra.com
+    generated_timestamp: 1607187743

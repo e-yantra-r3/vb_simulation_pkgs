@@ -1,0 +1,243 @@
+<?xml version='1.0' encoding='utf-8'?>
+<sdf version="1.6">
+  
+  <world name="default">
+    
+    <!-- A gazebo links attacher -->
+    <plugin name="ros_link_attacher_plugin" filename="libgazebo_ros_link_attacher.so"/>
+
+    <gravity>0 0 -9.8</gravity>
+    
+    <physics default="0" name="default_physics" type="ode">
+      <max_step_size>0.001</max_step_size>
+      <real_time_factor>1</real_time_factor>
+      <real_time_update_rate>1000</real_time_update_rate>
+    </physics>
+
+    <scene>
+      <shadows>0</shadows>
+      <grid>false</grid>
+      <origin_visual>false</origin_visual>
+    </scene>
+
+  
+    <gui fullscreen='0'>
+      <camera name='user_camera'>
+        <pose frame=''>-2.10389 10.906 2.34262 -0 0.228 -1.21797</pose>
+        <view_controller>orbit</view_controller>
+        <projection_type>perspective</projection_type>
+      </camera>
+    </gui>
+
+    
+    <model name="aws_robomaker_warehouse_Lamp_01_005">
+        <include>
+            <uri>model://aws_robomaker_warehouse_Lamp_01</uri>
+        </include>
+        <pose frame="">0 3.5 -4 0 0 0</pose>
+	  </model>
+    <light name="Warehouse_CeilingLight_003" type="point">
+      <pose frame="">0 3.5 9 0 0 0</pose>
+      <diffuse>0.5 0.5 0.5 1</diffuse>
+      <specular>0.2 0.2 0.2 1</specular>
+      <attenuation>
+        <range>80</range>
+        <constant>0.3</constant>
+        <linear>0.01</linear>
+        <quadratic>0.001</quadratic>
+      </attenuation>
+      <cast_shadows>1</cast_shadows>
+      <direction>0.1 0.1 -1</direction>
+    </light>
+
+
+
+    <model name="aws_robomaker_warehouse_GroundB_01_001">
+        <include>
+            <uri>model://aws_robomaker_warehouse_GroundB_01</uri>
+        </include>
+        <pose frame="">0.0 7.5 -0.140 0 0</pose>
+	  </model>
+       
+
+    
+    <model name="amazon_kiva_pod">
+        <include>
+            <uri>model://kiva_pod</uri>
+        </include>
+        <pose frame="">0 6.18 0 0 0 0</pose>
+        <static>true</static>
+    </model>
+
+    <model name="amazon_kiva_pod_pads">
+      
+      <!-- bottom_pads -->
+      <include>
+        <name>pad_bottom_00</name>
+        <uri>model://pad_bottom</uri>
+        <pose>0.28 6.43 1.83 0 0 0</pose> 
+      </include>
+
+      <include>
+        <name>pad_bottom_01</name>
+        <uri>model://pad_bottom</uri>
+        <pose>0 6.43 1.83 0 0 0</pose> 
+      </include>
+
+      <include>
+        <name>pad_bottom_02</name>
+        <uri>model://pad_bottom</uri>
+        <pose>-0.28 6.43 1.83 0 0 0</pose> 
+      </include>
+
+
+      
+      
+      <include>
+        <name>pad_bottom_10</name>
+        <uri>model://pad_bottom</uri>
+        <pose>0.28 6.43 1.56 0 0 0</pose> 
+      </include>
+
+      <include>
+        <name>pad_bottom_11</name>
+        <uri>model://pad_bottom</uri>
+        <pose>0 6.43 1.56 0 0 0</pose> 
+      </include>
+
+      <include>
+        <name>pad_bottom_12</name>
+        <uri>model://pad_bottom</uri>
+        <pose>-0.28 6.43 1.56 0 0 0</pose> 
+      </include>
+
+
+
+      
+      <include>
+        <name>pad_bottom_20</name>
+        <uri>model://pad_bottom</uri>
+        <pose>0.28 6.43 1.34 0 0 0</pose> 
+      </include>
+
+      <include>
+        <name>pad_bottom_21</name>
+        <uri>model://pad_bottom</uri>
+        <pose>0 6.43 1.34 0 0 0</pose> 
+      </include>
+
+      <include>
+        <name>pad_bottom_22</name>
+        <uri>model://pad_bottom</uri>
+        <pose>-0.28 6.43 1.34 0 0 0</pose> 
+      </include>
+
+
+
+      <include>
+        <name>pad_bottom_30</name>
+        <uri>model://pad_bottom</uri>
+        <pose>0.28 6.43 1.11 0 0 0</pose> 
+      </include>
+
+      <include>
+        <name>pad_bottom_31</name>
+        <uri>model://pad_bottom</uri>
+        <pose>0 6.43 1.11 0 0 0</pose> 
+      </include>
+
+      <include>
+        <name>pad_bottom_32</name>
+        <uri>model://pad_bottom</uri>
+        <pose>-0.28 6.43 1.11 0 0 0</pose> 
+      </include>
+
+      <!-- back-pads -->
+      <include>
+        <name>pad_back_00</name>
+        <uri>model://pad_back</uri>
+        <pose>0.28 6.31 1.93 0 0 0</pose> 
+      </include>
+      <include>
+        <name>pad_back_01</name>
+        <uri>model://pad_back</uri>
+        <pose>0.0 6.31 1.93 0 0 0</pose> 
+      </include>
+      <include>
+        <name>pad_back_02</name>
+        <uri>model://pad_back</uri>
+        <pose>-0.28 6.31 1.93 0 0 0</pose> 
+      </include>
+
+      <include>
+        <name>pad_back_10</name>
+        <uri>model://pad_back</uri>
+        <pose>0.28 6.31 1.66 0 0 0</pose> 
+      </include>
+      <include>
+        <name>pad_back_11</name>
+        <uri>model://pad_back</uri>
+        <pose>0.0 6.31 1.66 0 0 0</pose> 
+      </include>
+      <include>
+        <name>pad_back_12</name>
+        <uri>model://pad_back</uri>
+        <pose>-0.28 6.31 1.66 0 0 0</pose> 
+      </include>
+
+      <include>
+        <name>pad_back_20</name>
+        <uri>model://pad_back</uri>
+        <pose>0.28 6.31 1.44 0 0 0</pose> 
+      </include>
+      <include>
+        <name>pad_back_21</name>
+        <uri>model://pad_back</uri>
+        <pose>0.0 6.31 1.44 0 0 0</pose> 
+      </include>
+      <include>
+        <name>pad_back_22</name>
+        <uri>model://pad_back</uri>
+        <pose>-0.28 6.31 1.44 0 0 0</pose> 
+      </include>
+
+      <include>
+        <name>pad_back_30</name>
+        <uri>model://pad_back</uri>
+        <pose>0.28 6.31 1.21 0 0 0</pose> 
+      </include>
+      <include>
+        <name>pad_back_31</name>
+        <uri>model://pad_back</uri>
+        <pose>0.0 6.31 1.21 0 0 0</pose> 
+      </include>
+      <include>
+        <name>pad_back_32</name>
+        <uri>model://pad_back</uri>
+        <pose>-0.28 6.31 1.21 0 0 0</pose> 
+      </include>
+      
+
+    </model>
+
+
+    <model name="packagen11">
+      <include>
+        <uri>model://package_green</uri>
+        <static>false</static>
+      </include>
+      <pose frame="">0 6.56 1.41 0 0 0</pose>
+    </model>
+
+
+
+    <model name="camera_1">
+      <include>
+        <uri>model://camera1</uri>
+        <pose>0 7.78 1.5 0 0 -1.57</pose> 
+      </include>
+      <static>true</static>
+    </model>
+
+  </world>
+</sdf>

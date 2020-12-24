@@ -36,38 +36,38 @@
 
 
 
-      <sensor name="logical_camera_1" type="logical_camera">
+      <sensor name="logical_camera" type="logical_camera">
 
         <logical_camera>
           <near>0.2</near>
-          <far>1.0</far>
-          <horizontal_fov>1.1</horizontal_fov>
+          <far>2.0</far>
+          <horizontal_fov>0.9</horizontal_fov>
           <aspect_ratio>2.0</aspect_ratio>
         </logical_camera>
 
         <visualize>false</visualize>
         <always_on>true</always_on>
         <update_rate>10</update_rate>
-        <topic>logical_camera_1</topic>
+        <topic>camera_1</topic>
       </sensor>
 
 
-            <sensor name='camera' type='camera'>
+      <sensor name='camera' type='camera'>
         <camera name='camera_1'>
-            <horizontal_fov>1.1</horizontal_fov>
+            <horizontal_fov>0.9</horizontal_fov>
             <aspect_ratio>2.0</aspect_ratio>
             <image>
-                <width>128</width>
-                <height>128</height>
+                <width>720</width>
+                <height>1280</height>
             </image>
             <clip>
                 <near>0.2</near>
-                <far>1.0</far>
+                <far>3.0</far>
             </clip>
         </camera>
         <always_on>true</always_on>
         <update_rate>10</update_rate>
-        <visualize>true</visualize>
+        <visualize>false</visualize>
         <plugin name='camera_controller' filename='libgazebo_ros_camera.so'>
             <cameraName>camera_1</cameraName>
             <robotNamespace>/eyrc/vb</robotNamespace>

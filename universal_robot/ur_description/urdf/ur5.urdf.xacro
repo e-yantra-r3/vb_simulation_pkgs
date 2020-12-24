@@ -378,5 +378,99 @@
       <child link="${prefix}tool0"/>
     </joint>
 
+
+
+  <!-- Vacuum Gripper -->
+  <joint name="${prefix}tool0_to_gripper_base" type="fixed">
+    <parent link="${prefix}tool0"/>
+    <child link="${prefix}gripper_base"/>
+  </joint>
+
+   <link name="${prefix}gripper_base">
+    <visual>
+      <geometry>
+        <cylinder length="0.022043" radius="0.067187"/>
+      </geometry>
+      <material name="blue">
+        <color rgba="0 0 .8 1"/>
+      </material>
+    </visual>
+    <collision>
+      <geometry>
+        <cylinder length="0.022043" radius="0.067187"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="0.00001"/>
+      <inertia ixx="0.14583300" ixy="0.00000000" ixz="0.0" iyy="0.14583300" iyz="0.0" izz="0.12500000"/>
+    </inertial>
+  </link>
+
+
+  <joint name="${prefix}gripper_base_to_gripper" type="revolute">
+      <parent link="${prefix}gripper_base" />
+      <child link="${prefix}vacuum_gripper_link" />
+      <origin rpy="0 0 0" xyz="0 0 0.0221" />
+      <limit effort="30" velocity="1.0" lower="0" upper="0" />
+    </joint>
+
+  <link name="${prefix}vacuum_gripper_link">
+    
+    <visual>
+      <!-- <origin xyz="0 0 0" rpy="0 -1.57070 0"/> -->
+      <geometry>
+        <cylinder length="0.022043" radius="0.067187"/>
+      </geometry>
+      <material name="blue">
+        <color rgba="0 0 .8 1"/>
+      </material>
+    </visual>
+    <collision>
+      <!-- <origin xyz="0 0 0" rpy="0 -1.57070 0"/> -->
+      <geometry>
+        <cylinder length="0.022043" radius="0.067187"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="0.00001"/>
+      <inertia ixx="0.14583300" ixy="0.00000000" ixz="0.0" iyy="0.14583300" iyz="0.0" izz="0.12500000"/>
+    </inertial>
+  </link>
+
+  <gazebo>
+      <plugin name="ros_logical_camera" filename="libROSLogicalCameraPlugin.so">
+        <robotNamespace>/eyrc/vb/ur5/vacuum_gripper/logical_camera</robotNamespace>
+      </plugin>
+    </gazebo>
+
+    <gazebo reference="vacuum_gripper_link">
+      <material>Gazebo/DarkGray</material>
+    </gazebo>
+
+    <gazebo reference="vacuum_gripper_link">
+
+      <sensor name="vacuum_gripper_link_logical_camera" type="logical_camera">
+
+        <!-- <pose frame=''>0 0 -0.07 0 -1.57070 0</pose> -->
+        <!-- <origin xyz="0 0 0" rpy="0 -1.57070 0"/> -->
+
+        <pose frame=''>-0.065 0 0 0 0 0</pose>
+
+        <logical_camera>
+          <near>0.06</near>
+          <far>0.09</far>
+          <horizontal_fov>1.1</horizontal_fov>
+          <aspect_ratio>1.5</aspect_ratio>
+        </logical_camera>
+
+        <!-- <visualize>true</visualize> -->
+        <visualize>true</visualize>
+        <always_on>true</always_on>
+        <update_rate>10</update_rate>
+        <topic>logical_camera</topic>
+      </sensor>
+
+    </gazebo>
+
   </xacro:macro>
 </robot>

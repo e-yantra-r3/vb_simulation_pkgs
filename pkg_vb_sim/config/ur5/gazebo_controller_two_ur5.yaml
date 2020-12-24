@@ -1,0 +1,7 @@
+ur5_1_controller:
+    type: "position_controllers/JointTrajectoryController"
+    joints: [ur5_1_shoulder_pan_joint, ur5_1_shoulder_lift_joint, ur5_1_elbow_joint, ur5_1_wrist_1_joint, ur5_1_wrist_2_joint, ur5_1_wrist_3_joint]
+
+ur5_2_controller:
+    type: "position_controllers/JointTrajectoryController"
+    joints: [ur5_2_shoulder_pan_joint, ur5_2_shoulder_lift_joint, ur5_2_elbow_joint, ur5_2_wrist_1_joint, ur5_2_wrist_2_joint, ur5_2_wrist_3_joint]

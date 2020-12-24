@@ -1,0 +1,27 @@
+<launch>
+  
+  <arg name="arg_x" default="0.00" />
+  <arg name="arg_y" default="0.00" />
+  <arg name="arg_z" default="0.00" />
+  <arg name="arg_R" default="0.00" />
+  <arg name="arg_P" default="0.00" />
+  <arg name="arg_Y" default="0.00" />
+
+  <!-- Load Robot Description in Parameter Server -->
+  <param name="robot_description" textfile="$(find pkg_vb_sim)/urdf/two_ur5.urdf"/>
+  
+  <!-- Load Gazebo with Empty World --> 
+  <!-- <include file="$(find gazebo_ros)/launch/empty_world.launch" /> -->
+
+  <!-- Spawn URDF in Gazebo -->
+  <node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model" args="-x $(arg arg_x) -y $(arg arg_y) -z $(arg arg_z) -Y $(arg arg_Y) -param robot_description -urdf -model two_ur5" />
+  
+  <!-- Launch the Controller for the Robot in Gazebo -->
+  <rosparam file ="$(find pkg_vb_sim)/config/ur5/gazebo_controller_two_ur5.yaml"/>
+    
+  <node name= "controller_spawner" pkg= "controller_manager" type="spawner" args="two_ur5_controller"/>
+
+  <!-- Robot State Publisher for TF of each joint: publishes all the current states of the joint, then RViz can visualize -->
+  <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher"/>
+
+</launch>

@@ -1,0 +1,15 @@
+<launch>
+    
+    <!-- Spawn Task-2 Models in Gazebo -->
+    <include file="$(find pkg_vb_sim)/launch/task4_world.launch" />
+
+    <!-- Spawn two UR5 in Gazebo -->
+    <include file = "$(find pkg_vb_sim)/launch/two_ur5_gazebo.launch" />
+
+    <!-- Spawn T4 Boxes -->
+    <node name= "task4_spawn_models" pkg= "pkg_vb_sim" type="task4_spawn_models.py"/>
+
+    <!-- Run Conveyor Belt Service Server -->
+    <node name= "node_service_server_conveyor_belt" pkg= "pkg_vb_sim" type="node_service_server_conveyor_belt.py" output="screen"/>
+	
+</launch>

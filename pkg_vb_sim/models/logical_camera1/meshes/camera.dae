@@ -26,7 +26,7 @@
         <technique sid="common">
           <blinn>
             <emission>
-              <color>1 0 0 1</color>
+              <color>0 0 1 1</color>
             </emission>
             <ambient>
               <color>0.5882353 0.5882353 0.5882353 1</color>
@@ -35,13 +35,13 @@
               <texture texture="_dVisionCamera_png-sampler" texcoord="CHANNEL1"/>
             </diffuse>
             <specular>
-              <color>1 0 0 1</color>
+              <color>0 0 1 1</color>
             </specular>
             <shininess>
               <float>9.999999</float>
             </shininess>
             <reflective>
-              <color>1 0 0 1</color>
+              <color>0 0 1 1</color>
             </reflective>
             <transparent opaque="A_ONE">
               <color>1 1 1 1</color>

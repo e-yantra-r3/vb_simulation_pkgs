@@ -57,7 +57,7 @@ class ConveyorBelt():
 		wrench.force.z = arg_z
 
 		try:
-			resp1 = apply_body_wrench(body_name, "", None, wrench, rospy.Time.from_sec(0), rospy.Duration.from_sec(1.0))
+			resp1 = apply_body_wrench(body_name, "", None, wrench, rospy.Time.from_sec(0), rospy.Duration.from_sec(0.05))
 		except rospy.ServiceException:
 			success = False
 		if success:
@@ -90,11 +90,46 @@ class ConveyorBelt():
 		service_request = ConveyorBeltControlRequest(set_power)
 		service_response = gazebo_conveyor_belt_service_proxy(service_request)
 		
+		# rospy.sleep(1)
+		
+		# rospy.sleep(0.1)
 		self.apply_force("conveyor_belt::conveyor_belt_moving::belt", 0, 0, 9.8)
 
-		self.apply_force("packagen1::link", 0, 0, 0.000000001)
-		self.apply_force("packagen2::link", 0, 0, 0.000000001)
-		self.apply_force("packagen3::link", 0, 0, 0.000000001)
+		# rospy.sleep(0.1)
+		self.apply_force("packagen00::link", 0, 0, 0.000000001)
+		
+		# rospy.sleep(0.1)
+		self.apply_force("packagen01::link", 0, 0, 0.000000001)
+		
+		# rospy.sleep(0.1)
+		self.apply_force("packagen02::link", 0, 0, 0.000000001)
+		
+		# rospy.sleep(0.1)
+		self.apply_force("packagen10::link", 0, 0, 0.000000001)
+		
+		# rospy.sleep(0.1)
+		self.apply_force("packagen11::link", 0, 0, 0.000000001)
+		
+		# rospy.sleep(0.1)
+		self.apply_force("packagen12::link", 0, 0, 0.000000001)
+
+		# rospy.sleep(0.1)
+		self.apply_force("packagen20::link", 0, 0, 0.000000001)
+		
+		# rospy.sleep(0.1)
+		self.apply_force("packagen21::link", 0, 0, 0.000000001)
+		
+		# rospy.sleep(0.1)
+		self.apply_force("packagen22::link", 0, 0, 0.000000001)
+
+		# rospy.sleep(0.1)
+		self.apply_force("packagen30::link", 0, 0, 0.000000001)
+		
+		# rospy.sleep(0.1)
+		self.apply_force("packagen31::link", 0, 0, 0.000000001)
+		
+		# rospy.sleep(0.1)
+		self.apply_force("packagen32::link", 0, 0, 0.000000001)
 		
 
 		return conveyorBeltPowerMsgResponse(service_response.success)

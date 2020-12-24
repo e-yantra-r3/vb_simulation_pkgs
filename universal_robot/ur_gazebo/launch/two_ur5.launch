@@ -1,0 +1,34 @@
+<launch>
+  <param name="/use_sim_time" value="true" />
+  <arg name="robot_name"/>
+  <arg name="init_pose"/>
+  <arg name= "limited" default= "false"/>
+  <arg name="paused" default="false" doc="Starts gazebo in paused mode" />
+  <arg name="transmission_hw_interface" default="hardware_interface/PositionJointInterface" />
+  <arg name="gui" default="true" doc="Starts gazebo gui" />
+  <param unless="$(arg limited)" name="robot_description" command="$(find xacro)/xacro --inorder '$(find ur_description)/urdf/ur5_robot.urdf.xacro' transmission_hw_interface:=$(arg transmission_hw_interface)" />
+  <param if="$(arg limited)" name="robot_description" command="$(find xacro)/xacro --inorder '$(find ur_description)/urdf/ur5_joint_limited_robot.urdf.xacro' transmission_hw_interface:=$(arg transmission_hw_interface)" />
+
+  <include file="$(find gazebo_ros)/launch/empty_world.launch">
+    <arg name="world_name" default="worlds/empty.world"/>
+    <arg name="paused" value="$(arg paused)"/>
+    <arg name="gui" value="$(arg gui)"/>
+  </include>
+
+  <group ns="robot1">
+    <param name="tf_prefix" value="robot1_tf" />
+      <include file="$(find ur_gazebo)/launch/ur5.launch">
+        <arg name="init_pose" value="-x 0 -y 0 -z 0.0"/>
+        <arg name="robot_name" value="robot1"/>
+      </include>
+    </group>
+
+  <group ns="robot2">
+    <param name="tf_prefix" value="robot2_tf" />
+      <include file="$(find ur_gazebo)/launch/ur5.launch">
+        <arg name="init_pose" value="-x 0 -y 7 -z 0.0"/>
+        <arg name="robot_name" value="robot2"/>
+      </include>
+    </group>
+
+</launch>
