@@ -1,6 +1,6 @@
 
 <launch>
-  <rosparam file="$(find pkg_moveit_ur5)/config/controllers.yaml" />
+  <rosparam file="$(find pkg_moveit_ur5_2_config)/config/controllers.yaml" />
 
   <param name="use_controller_manager" value="false" />
   <param name="trajectory_execution/execution_duration_monitoring" value="false" />
