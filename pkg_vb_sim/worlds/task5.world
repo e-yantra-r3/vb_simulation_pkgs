@@ -1,0 +1,320 @@
+<?xml version='1.0' encoding='utf-8'?>
+<sdf version="1.6">
+  
+  <world name="default">
+    
+    <!-- A gazebo links attacher -->
+    <plugin name="ros_link_attacher_plugin" filename="libgazebo_ros_link_attacher.so"/>
+
+    <gravity>0 0 -9.8</gravity>
+    
+    <physics default="0" name="default_physics" type="ode">
+      <max_step_size>0.001</max_step_size>
+      <real_time_factor>1</real_time_factor>
+      <real_time_update_rate>1000</real_time_update_rate>
+    </physics>
+
+    <scene>
+      <shadows>0</shadows>
+      <grid>false</grid>
+      <origin_visual>false</origin_visual>
+    </scene>
+
+  
+    <gui fullscreen='0'>
+      <camera name='user_camera'>
+        <!-- <pose frame=''>-4.70385 10.895 16.2659 -0 0.921795 -1.12701</pose> -->
+        <!-- <pose frame=''>-2.75 4.19 5.15 0.0 0.72 -0.99</pose> -->
+        <!-- <pose frame=''>-2.89239 -4.36035 4.84129 0 0.764001 -0.753949</pose> -->
+        <pose frame=''>-3.66084 8.34762 6.21023 0 0.772001 -0.817968</pose>
+        <view_controller>orbit</view_controller>
+        <projection_type>perspective</projection_type>
+      </camera>
+    </gui>
+
+    
+    <model name="aws_robomaker_warehouse_Lamp_01_005">
+        <include>
+            <uri>model://aws_robomaker_warehouse_Lamp_01</uri>
+        </include>
+        <pose frame="">0 3.5 -4 0 0 0</pose>
+	  </model>
+    <light name="Warehouse_CeilingLight_003" type="point">
+      <pose frame="">0 3.5 9 0 0 0</pose>
+      <diffuse>0.5 0.5 0.5 1</diffuse>
+      <specular>0.2 0.2 0.2 1</specular>
+      <attenuation>
+        <range>80</range>
+        <constant>0.3</constant>
+        <linear>0.01</linear>
+        <quadratic>0.001</quadratic>
+      </attenuation>
+      <cast_shadows>1</cast_shadows>
+      <direction>0.1 0.1 -1</direction>
+    </light>
+
+
+
+    <model name="aws_robomaker_warehouse_GroundB_01_001">
+        <include>
+            <uri>model://aws_robomaker_warehouse_GroundB_01</uri>
+        </include>
+        <pose frame="">0.0 7.5 -0.140 0 0</pose>
+	  </model>
+       
+
+    
+    <model name="amazon_kiva_pod">
+        <include>
+            <uri>model://kiva_pod</uri>
+        </include>
+        <pose frame="">0 6.18 0 0 0 0</pose>
+        <static>true</static>
+    </model>
+
+    <model name="amazon_kiva_pod_pads">
+      
+      <!-- bottom_pads -->
+      <include>
+        <name>pad_bottom_00</name>
+        <uri>model://pad_bottom</uri>
+        <pose>0.28 6.43 1.83 0 0 0</pose> 
+      </include>
+
+      <include>
+        <name>pad_bottom_01</name>
+        <uri>model://pad_bottom</uri>
+        <pose>0 6.43 1.83 0 0 0</pose> 
+      </include>
+
+      <include>
+        <name>pad_bottom_02</name>
+        <uri>model://pad_bottom</uri>
+        <pose>-0.28 6.43 1.83 0 0 0</pose> 
+      </include>
+
+
+      
+      
+      <include>
+        <name>pad_bottom_10</name>
+        <uri>model://pad_bottom</uri>
+        <pose>0.28 6.43 1.56 0 0 0</pose> 
+      </include>
+
+      <include>
+        <name>pad_bottom_11</name>
+        <uri>model://pad_bottom</uri>
+        <pose>0 6.43 1.56 0 0 0</pose> 
+      </include>
+
+      <include>
+        <name>pad_bottom_12</name>
+        <uri>model://pad_bottom</uri>
+        <pose>-0.28 6.43 1.56 0 0 0</pose> 
+      </include>
+
+
+
+      
+      <include>
+        <name>pad_bottom_20</name>
+        <uri>model://pad_bottom</uri>
+        <pose>0.28 6.43 1.34 0 0 0</pose> 
+      </include>
+
+      <include>
+        <name>pad_bottom_21</name>
+        <uri>model://pad_bottom</uri>
+        <pose>0 6.43 1.34 0 0 0</pose> 
+      </include>
+
+      <include>
+        <name>pad_bottom_22</name>
+        <uri>model://pad_bottom</uri>
+        <pose>-0.28 6.43 1.34 0 0 0</pose> 
+      </include>
+
+
+
+      <include>
+        <name>pad_bottom_30</name>
+        <uri>model://pad_bottom</uri>
+        <pose>0.28 6.43 1.11 0 0 0</pose> 
+      </include>
+
+      <include>
+        <name>pad_bottom_31</name>
+        <uri>model://pad_bottom</uri>
+        <pose>0 6.43 1.11 0 0 0</pose> 
+      </include>
+
+      <include>
+        <name>pad_bottom_32</name>
+        <uri>model://pad_bottom</uri>
+        <pose>-0.28 6.43 1.11 0 0 0</pose> 
+      </include>
+
+      <!-- back-pads -->
+      <include>
+        <name>pad_back_00</name>
+        <uri>model://pad_back</uri>
+        <pose>0.28 6.31 1.93 0 0 0</pose> 
+      </include>
+      <include>
+        <name>pad_back_01</name>
+        <uri>model://pad_back</uri>
+        <pose>0.0 6.31 1.93 0 0 0</pose> 
+      </include>
+      <include>
+        <name>pad_back_02</name>
+        <uri>model://pad_back</uri>
+        <pose>-0.28 6.31 1.93 0 0 0</pose> 
+      </include>
+
+      <include>
+        <name>pad_back_10</name>
+        <uri>model://pad_back</uri>
+        <pose>0.28 6.31 1.66 0 0 0</pose> 
+      </include>
+      <include>
+        <name>pad_back_11</name>
+        <uri>model://pad_back</uri>
+        <pose>0.0 6.31 1.66 0 0 0</pose> 
+      </include>
+      <include>
+        <name>pad_back_12</name>
+        <uri>model://pad_back</uri>
+        <pose>-0.28 6.31 1.66 0 0 0</pose> 
+      </include>
+
+      <include>
+        <name>pad_back_20</name>
+        <uri>model://pad_back</uri>
+        <pose>0.28 6.31 1.44 0 0 0</pose> 
+      </include>
+      <include>
+        <name>pad_back_21</name>
+        <uri>model://pad_back</uri>
+        <pose>0.0 6.31 1.44 0 0 0</pose> 
+      </include>
+      <include>
+        <name>pad_back_22</name>
+        <uri>model://pad_back</uri>
+        <pose>-0.28 6.31 1.44 0 0 0</pose> 
+      </include>
+
+      <include>
+        <name>pad_back_30</name>
+        <uri>model://pad_back</uri>
+        <pose>0.28 6.31 1.21 0 0 0</pose> 
+      </include>
+      <include>
+        <name>pad_back_31</name>
+        <uri>model://pad_back</uri>
+        <pose>0.0 6.31 1.21 0 0 0</pose> 
+      </include>
+      <include>
+        <name>pad_back_32</name>
+        <uri>model://pad_back</uri>
+        <pose>-0.28 6.31 1.21 0 0 0</pose> 
+      </include>
+      
+
+    </model>
+
+
+    <!-- Shelf Packages -->
+    <!-- Row #0 -->
+    <!-- <model name="packagen00">
+      <include>
+        <uri>model://package_red</uri>
+      </include>
+      <pose frame="">0.28 6.56 1.93 0 0 0</pose>
+    </model> -->
+
+    
+
+    <include>
+      <uri>model://conveyor</uri>
+      <pose>-0.8 9 0 0 0 -1.571</pose>
+    </include>
+
+    <include>
+      <uri>model://conveyor_end_cylinder</uri>
+      <pose>-0.8 9 0.5 0 0 -1.571</pose>
+      <static>true</static>
+    </include>
+
+    <model name="conveyor_end_bin_1">
+      <include>
+        <uri>model://bin_1_</uri>
+        <pose>-0.84 -1.64 0 0 0 -3.14</pose>
+        <static>true</static>
+      </include>
+    </model>
+
+    <model name="conveyor_end_bin_2">
+      <include>
+        <uri>model://bin_1_</uri>
+        <pose>-0.84 -1.01 0 0 0 0</pose>
+        <static>true</static>
+      </include>
+    </model>
+
+    <model name="camera_1">
+      <include>
+        <uri>model://camera1</uri>
+        <pose>0 7.78 1.5 0 0 -1.57</pose> 
+      </include>
+      <static>true</static>
+    </model>
+
+    <model name="logical_camera_1">
+      <include>
+        <uri>model://logical_camera1</uri>
+        <pose>-0.8 7 2.0 0 1.5708 0</pose>
+      </include>
+      <static>true</static>
+    </model>  
+
+    <model name="logical_camera_2">
+      <include>
+        <uri>model://logical_camera2</uri>
+        <pose>-0.8 0 2.0 0 1.5708 0</pose>
+      </include>
+      <static>true</static>
+    </model> 
+
+    <model name="sorting_bin_red_">
+      <include>
+        <uri>model://sorting_bin_red_</uri>
+        <!-- <pose>0.11 0.65 0.0 0 0 0</pose> -->
+        <static>true</static>
+      </include>
+      <pose frame="">0 0.65 0 0 0 0</pose>
+      <static>true</static>
+    </model>
+
+    <model name="sorting_bin_yellow_">
+      <include>
+        <uri>model://sorting_bin_yellow_</uri>
+        <!-- <pose>0.75 0.03 0 0 0 -1.57</pose> -->
+        <static>true</static>
+      </include>
+      <pose frame="">0.75 0 0 0 0 -1.57</pose>
+      <static>true</static>
+    </model>
+
+    <model name="sorting_bin_green_">
+      <include>
+        <uri>model://sorting_bin_green_</uri>
+        <!-- <pose>0.04 -0.65 0 0 0 0</pose> -->
+        <static>true</static>
+      </include>
+      <pose frame="">0 -0.65 0 0 0 0</pose>
+      <static>true</static>
+    </model>
+
+  </world>
+</sdf>

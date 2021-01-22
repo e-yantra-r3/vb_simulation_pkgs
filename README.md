@@ -10,9 +10,24 @@
 
 
 
+## 25 DEC 2020 | v 1.2.2
+
+* Minor bug fixes.
+  * Red Package QR fixed.
+  * Launch file error fixed.
+
+```
+deleted:    pkg_moveit_ur5_1_config/launch/final_two_ur5_moveit_gazebo.launch
+modified:   pkg_moveit_ur5_1_config/launch/ur5_moveit_controller_manager.launch.xml
+deleted:    pkg_moveit_ur5_2_config/launch/final_two_ur5_moveit_gazebo.launch
+modified:   pkg_moveit_ur5_2_config/launch/ur5_moveit_controller_manager.launch.xml
+```
+
+
+
 ## 25 DEC 2020 | v 1.2.1
 
-* Minor bug fixes
+* Minor bug fixes.
 
 ```
 modified:   pkg_moveit_ur5_1_config/launch/moveit_rviz_robot1.launch

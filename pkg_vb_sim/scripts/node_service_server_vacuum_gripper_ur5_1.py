@@ -30,6 +30,7 @@ class VacuumGripper():
         print(param_config_vacuum_gripper)
         
         self._flag_pickable = False
+        self._flag_plugin_in_use = False
         self._count = 0
 
         
@@ -48,19 +49,25 @@ class VacuumGripper():
 
     
     def activate_vacuum_gripper(self):
-      
-      rospy.loginfo("Attach request received")
-      req = AttachRequest()
-      req.model_name_1 = self._vacuum_gripper_model_name
-      req.link_name_1 = self._vacuum_gripper_link_name
-      req.model_name_2 = self._object_model_name
-      req.link_name_2 = self._object_link_name
-      self._attach_srv_a.call(req)
+        
+        rospy.set_param("vacuum_gripper_plugin_in_usage", True)
+
+        rospy.loginfo("Attach request received")
+        req = AttachRequest()
+        req.model_name_1 = self._vacuum_gripper_model_name
+        req.link_name_1 = self._vacuum_gripper_link_name
+        req.model_name_2 = self._object_model_name
+        req.link_name_2 = self._object_link_name
+        self._attach_srv_a.call(req)
+
+        rospy.set_param("vacuum_gripper_plugin_in_usage", False)
 
     
     
     def deactivate_vacuum_gripper(self):
       
+      rospy.set_param("vacuum_gripper_plugin_in_usage", True)
+
       rospy.loginfo("Detach request received")
       req = AttachRequest()
       req.model_name_1 = self._vacuum_gripper_model_name
@@ -69,12 +76,20 @@ class VacuumGripper():
       req.link_name_2 = self._object_link_name
       self._attach_srv_d.call(req)
 
+      rospy.set_param("vacuum_gripper_plugin_in_usage", False)
+
+    
     
     def callback_service_on_request(self, req):
+
+        self._flag_plugin_in_use = rospy.get_param("vacuum_gripper_plugin_in_usage")
+
         rospy.loginfo( '\033[94m' + " >>> Vacuum Gripper Activate: {}".format(req.activate_vacuum_gripper) + '\033[0m')
         rospy.loginfo( '\033[94m' + " >>> Vacuum Gripper Flag Pickable: {}".format(self._flag_pickable) + '\033[0m')
+        rospy.loginfo( '\033[94m' + " >>> Vacuum Gripper Plugin in Use: {}".format(self._flag_plugin_in_use) + '\033[0m')
 
-        if( (req.activate_vacuum_gripper is True) and (self._flag_pickable is True) ):
+        
+        if( (req.activate_vacuum_gripper is True) and (self._flag_pickable is True) and (self._flag_plugin_in_use is False) ):
             self.activate_vacuum_gripper()
             return vacuumGripperResponse(True)
         else:

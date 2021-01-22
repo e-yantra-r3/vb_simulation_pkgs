@@ -1,4 +1,6 @@
 # Vacuum Gripper Configuration
+vacuum_gripper_plugin_in_usage: false
+
 config_vacuum_gripper_ur5_1:
   vacuum_gripper_model_name: "ur5_1"
   vacuum_gripper_link_name: "vacuum_gripper_link"

@@ -1,0 +1,17 @@
+# Config file for colour of the packages
+package_colour:
+  package_00: "red"
+  package_01: "yellow"
+  package_02: "green"
+
+  package_10: "green"
+  package_11: "yellow"
+  package_12: "red"
+
+  package_20: "green"
+  package_21: "red"
+  package_22: "yellow"
+
+  package_30: "yellow"
+  package_31: "green"
+  package_32: "red"

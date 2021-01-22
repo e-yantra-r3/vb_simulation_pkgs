@@ -1,0 +1,17 @@
+# Config file to store intervals at which to place online orders
+online_order_config:
+  mqtt_server_url: "broker.mqttdashboard.com"
+  mqtt_server_port: 1883
+  mqtt_qos: 0
+  mqtt_unique_id: "eyantraiitb"
+
+online_order_intervals:
+  package_1: 60
+  package_2: 65
+  package_3: 70
+  package_4: 100
+  package_5: 105
+  package_6: 110
+  package_7: 130
+  package_8: 135
+  package_9: 140
