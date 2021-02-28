@@ -10,6 +10,12 @@
 
 
 
+## 28 FEB 2021 | v 1.4
+
+* Task-6 Config Generator added.
+
+  
+
 ## 25 DEC 2020 | v 1.2.2
 
 * Minor bug fixes.
